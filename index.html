@@ -1688,13 +1688,15 @@
         function saveState() { localStorage.setItem('atropos_war_state_v7_0', JSON.stringify(campaignState)); updateUI(); }
 
         function switchTab(tabId) {
-            document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-            document.querySelectorAll('nav button').forEach(btn => {
-                btn.classList.remove('border-grimdark-green', 'bg-grimdark-800', 'text-grimdark-green');
-                btn.classList.add('border-grimdark-700', 'text-slate-300');
-            });
-            const activeBtn = document.getElementById(`nav-${tabId}`);
+            var sections = document.querySelectorAll('section');
+            for (var i = 0; i < sections.length; i++) { sections[i].classList.add('hidden'); }
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            var navBtns = document.querySelectorAll('nav button');
+            for (var j = 0; j < navBtns.length; j++) {
+                navBtns[j].classList.remove('border-grimdark-green', 'bg-grimdark-800', 'text-grimdark-green');
+                navBtns[j].classList.add('border-grimdark-700', 'text-slate-300');
+            }
+            var activeBtn = document.getElementById('nav-' + tabId);
             if (activeBtn) {
                 activeBtn.classList.remove('border-grimdark-700', 'text-slate-300');
                 activeBtn.classList.add('border-grimdark-green', 'bg-grimdark-800', 'text-grimdark-green');
